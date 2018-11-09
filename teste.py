@@ -24,8 +24,14 @@ def get_instances():
 def get_keypairs():
     keypair_list = []
     for keypair in conn.list_keypairs():
+        print(keypair)
         keypair_list.append()
+    return keypair_list
 
+print(get_images(),"\n")
+print(get_flavors(),"\n")
+print(get_instances(),"\n")
+get_keypairs()
 # keypair_name = 'demokey'
 # pub_key_file = '/home/cloud/.ssh/id_rsa.pub'
 
