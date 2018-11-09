@@ -18,18 +18,18 @@ def get_flavors():
 def get_instances():
     instance_list = []
     for instance in conn.list_servers():
-        instance_list.append((instance_list['id'], instance_list['name']))
+        instance_list.append((instance['id'], instance['name']))
     return instance_list
 
 def get_keypairs():
     keypair_list = []
     for keypair in conn.list_keypairs():
         print(keypair)
-        keypair_list.append()
+        keypair_list.append(keypair['name'])
     return keypair_list
 
-print(get_images(),"\n")
-print(get_flavors(),"\n")
+# print(get_images(),"\n")
+# print(get_flavors(),"\n")
 print(get_instances(),"\n")
 get_keypairs()
 # keypair_name = 'demokey'
