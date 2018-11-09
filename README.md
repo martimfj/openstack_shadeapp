@@ -40,5 +40,25 @@ clouds:
 
 ## Launch de uma instância
 
+Para criar uma instância, o programa utiliza essa função que recebe todas as informações necessárias para o Launch e aloca um IP flutuante para a máquina.
+
+```python
+def create_instance(image_id, flavor_id, instance_name, key_name, sec_group_name, network_id, ex_userdata):
+    testing_instance = conn.create_server(wait=True, auto_ip=False,
+        name=instance_name,
+        image=image_id,
+        flavor=flavor_id,
+        key_name=keypair_name,
+        security_groups=[sec_group_name],
+        userdata=ex_userdata,
+        network=network_id)
+
+    f_ip = conn.available_floating_ip()
+    conn.add_ip_list(testing_instance, [f_ip['floating_ip_address']])
+    print('The Fractals app will be deployed to http://%s' % f_ip['floating_ip_address'] )
+```
+
+## Pŕóximos passos
+Uma possível melhoria para o programa seria transformar o que foi hardcoded em input de usuários. Isto está parcialmente implementado, só é preciso criar inputs criar a interface com o usuário.
 
 
